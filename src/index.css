@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+/* Design tokens from design.md. Each token becomes utilities: bg-cobalt, text-ink, font-sans... */
+@theme {
+  --color-ink: #12112b;
+  --color-ground: #f5f4fb;
+  --color-surface: #ffffff;
+  --color-muted: #5a5878;
+  --color-line: #dad7ee;
+  --color-cobalt: #3a2eff;
+  --color-tang: #ff6b2c;
+  --color-lilac: #c9c2ff;
+  --color-mint: #9be8c8;
+  --color-butter: #ffe58a;
+  --color-err: #b3261e;
+  --font-sans: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-serif: Literata, Georgia, serif;
+}
+
+@layer base {
+  html {
+    scroll-padding-top: env(safe-area-inset-top, 0px);
+  }
+  body {
+    @apply bg-ground font-serif text-lg leading-[1.65] text-ink antialiased overflow-x-hidden;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-cobalt);
+    outline-offset: 3px;
+  }
+  h1:focus {
+    outline: none;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.35em);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes drift-a {
+  to {
+    transform: translate(-40px, 36px);
+  }
+}
+@keyframes drift-b {
+  to {
+    transform: translate(48px, -24px);
+  }
+}
+
+.rise {
+  animation: rise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.drift-a {
+  animation: drift-a 9s 1.4s ease-in-out infinite alternate;
+}
+.drift-b {
+  animation: drift-b 11s 1.6s ease-in-out infinite alternate;
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.7s,
+    transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+.project-card .project-card-image {
+  transform: translateY(0) scale(1);
+  transform-origin: bottom center;
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-card:hover .project-card-image,
+.project-card:focus-visible .project-card-image {
+  transform: translateY(-20px) scale(1.05);
+}
+.project-card .project-card-image {
+  transform: translateY(0) scale(1);
+  transform-origin: bottom center;
+  filter: drop-shadow(0 16px 24px rgba(18, 17, 43, 0.25));
+  transition:
+    transform 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 500ms ease;
+}
+
+.project-card:hover .project-card-image,
+.project-card:focus-visible .project-card-image {
+  transform: translateY(-20px) scale(1.05);
+  filter: drop-shadow(0 24px 32px rgba(18, 17, 43, 0.35));
+}
