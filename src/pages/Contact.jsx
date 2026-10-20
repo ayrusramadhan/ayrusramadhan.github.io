@@ -59,8 +59,9 @@ export default function Contact() {
         </h1>
 
         <p className="mb-6 leading-relaxed">
-          I'm looking for product design roles and a few freelance projects each
-          year. Tell me what you're building and where it is stuck.
+          I'm open to UI/UX Designer roles and select freelance projects. Tell
+          me what you're building, what challenges you're facing, and how I can
+          help.
         </p>
 
         <a
