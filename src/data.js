@@ -60,8 +60,8 @@ export const projects = [
 // Add one entry per project slug. Projects without an entry fall back to the first one.
 export const caseStudies = {
   "dashboard-monitoring": {
-    status: "published",
-    // status: "coming-soon",
+    // status: "published",
+    status: "coming-soon",
     summary:
       "I redesigned a five-step payment flow into two steps and tested it with 24 people over three rounds.",
     details: {
