@@ -60,20 +60,24 @@ export const projects = [
 // Add one entry per project slug. Projects without an entry fall back to the first one.
 export const caseStudies = {
   "dashboard-monitoring": {
-    status: "coming-soon",
+    status: "published",
+    // status: "coming-soon",
     summary:
       "I redesigned a five-step payment flow into two steps and tested it with 24 people over three rounds.",
     details: {
       Role: "UI/UX Designer",
       Team: "1 PM, 4 engineers, 1 researcher",
       Timeline: "10 weeks",
-      Tools: "Figma, Maze, Amplitude",
+      Tools: "Figma, Figjam, Lucide",
     },
     sections: [
       {
         h: "The problem",
         p: "Four in ten people who started checkout left before paying. Session recordings showed most of them stalled on the payment-method step.",
         note: "I started with recordings, not a survey. People show what they do; surveys only show what they remember.",
+        image: "/images/projects/inventory-management.png",
+        imageAlt: "Wireframe halaman inventory management",
+        caption: "Initial exploration of the inventory interface.",
       },
       {
         h: "What I tried",
@@ -91,6 +95,10 @@ export const caseStudies = {
       },
       {
         h: "What I would do differently",
+        p: "I would bring engineering into prototype testing earlier. Two ideas I loved turned out to be expensive to build.",
+      },
+      {
+        h: "Lorem ipsum sit dolor amet",
         p: "I would bring engineering into prototype testing earlier. Two ideas I loved turned out to be expensive to build.",
       },
     ],

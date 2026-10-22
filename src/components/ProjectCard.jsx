@@ -22,7 +22,6 @@ export default function ProjectCard({ p }) {
             {p.title}
           </h3>
 
-          {/* Gambar menggantikan mockup, bukan background */}
           {p.image ? (
             <div className="pointer-events-none absolute bottom-0 right-[5%] w-[80%] translate-y-[15%] md:right-[10%] md:w-[55%]">
               <img
@@ -37,11 +36,19 @@ export default function ProjectCard({ p }) {
             <Mockup type={p.mock} accent={accent} />
           )}
 
-          <div className="absolute bottom-6 left-7 right-7 z-10 flex flex-wrap gap-2">
+          <div className="absolute bottom-5 left-5 right-5 z-20 flex flex-wrap gap-2 md:bottom-6 md:left-7 md:right-7">
             {p.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border-[1.5px] border-current px-3.5 py-2 font-sans text-[13px] font-semibold leading-none"
+                className="
+                  rounded-full border border-white
+                  bg-white px-3 py-2
+                  font-sans text-xs font-semibold
+                  leading-none text-[#12112B] shadow-sm
+                  md:border-[1.5px] md:border-current
+                  md:bg-transparent md:px-3.5
+                  md:text-[13px] md:text-inherit md:shadow-none
+                "
               >
                 {tag}
               </span>
