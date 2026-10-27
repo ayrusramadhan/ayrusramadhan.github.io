@@ -257,9 +257,120 @@ export default function CaseStudy() {
                   </h2>
                 </div>
 
-                <p className="max-w-[68ch] whitespace-pre-line text-base leading-[1.9] text-ink/75 md:text-lg">
-                  {section.p}
-                </p>
+                {section.blocks?.map((block, blockIndex) => {
+                  if (block.type === "paragraph") {
+                    return (
+                      <p
+                        key={blockIndex}
+                        className="mt-4 max-w-[68ch] whitespace-pre-line text-base leading-[1.9] text-ink/75 md:text-lg"
+                      >
+                        {typeof block.content === "string"
+                          ? block.content
+                          : block.content.map((part, partIndex) =>
+                              part.bold ? (
+                                <strong
+                                  key={partIndex}
+                                  className="font-bold text-ink"
+                                >
+                                  {part.text}
+                                </strong>
+                              ) : (
+                                <span key={partIndex}>{part.text}</span>
+                              ),
+                            )}
+                      </p>
+                    );
+                  }
+
+                  if (block.type === "image") {
+                    return (
+                      <figure
+                        key={blockIndex}
+                        className="mt-7 overflow-hidden rounded-[20px] border border-line bg-surface"
+                      >
+                        <img
+                          src={block.src}
+                          alt={block.alt ?? ""}
+                          loading="lazy"
+                          decoding="async"
+                          className="block h-auto w-full"
+                        />
+
+                        {block.caption && (
+                          <figcaption className="border-t border-line px-5 py-3 text-xs leading-relaxed text-ink/60">
+                            {block.caption}
+                          </figcaption>
+                        )}
+                      </figure>
+                    );
+                  }
+
+                  if (block.type === "bullets") {
+                    return (
+                      <ul
+                        key={blockIndex}
+                        className="mt-4 max-w-[68ch] list-disc space-y-3 pl-6 text-base leading-[1.9] text-ink/75 marker:text-ink/60 md:text-lg"
+                      >
+                        {block.items.map((item, itemIndex) => (
+                          <li key={itemIndex} className="pl-1">
+                            {item.title && (
+                              <strong className="font-bold text-ink">
+                                {item.title}:{" "}
+                              </strong>
+                            )}
+                            {item.text}
+                          </li>
+                        ))}
+                      </ul>
+                    );
+                  }
+
+                  return null;
+                })}
+
+                {section.p && (
+                  <p className="max-w-[68ch] whitespace-pre-line text-base leading-[1.9] text-ink/75 md:text-lg">
+                    {section.p}
+                  </p>
+                )}
+
+                {section.paragraphs?.map((paragraph, paragraphIndex) => (
+                  <p
+                    key={paragraphIndex}
+                    className="mt-4 max-w-[68ch] whitespace-pre-line text-base leading-[1.9] text-ink/75 md:text-lg"
+                  >
+                    {typeof paragraph === "string"
+                      ? paragraph
+                      : paragraph.map((part, partIndex) =>
+                          part.bold ? (
+                            <strong
+                              key={partIndex}
+                              className="font-bold text-ink"
+                            >
+                              {part.text}
+                            </strong>
+                          ) : (
+                            <span key={partIndex}>{part.text}</span>
+                          ),
+                        )}
+                  </p>
+                ))}
+
+                {section.bullets?.length > 0 && (
+                  <ul className="mt-4 max-w-[68ch] list-disc space-y-3 pl-6 text-base leading-[1.9] text-ink/75 marker:text-ink/60 md:text-lg">
+                    {section.bullets.map((item, bulletIndex) => (
+                      <li key={`${item.title}-${bulletIndex}`} className="pl-1">
+                        {item.title && (
+                          <strong className="font-bold text-ink">
+                            {item.title}:{" "}
+                          </strong>
+                        )}
+
+                        {item.text}
+                      </li>
+                    ))}
+                  </ul>
+                )}
 
                 {section.image && (
                   <figure className="mt-7 overflow-hidden rounded-[20px] border border-line bg-surface">
