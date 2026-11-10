@@ -38,13 +38,13 @@ export const projects = [
     image: `${import.meta.env.BASE_URL}images/projects/inventory-management.png`,
   },
   {
-    slug: "logistics-design-system",
-    title: "A design system for a logistics dashboard",
+    slug: "mobile-monitoring",
+    title: "Monitoring system mobile",
     outcome:
       "Forty components and one token set let two teams ship from the same library.",
-    tags: ["Design system", "B2B"],
+    tags: ["Mobile", "Dashboard"],
     panel: "lilac",
-    mock: "dashboard",
+    mock: "onboarding",
   },
   {
     slug: "redesign-website",
@@ -53,7 +53,7 @@ export const projects = [
       "Redesigned a school website to create a clearer structure and make essential information easier for students, parents, and prospective families to find.",
     tags: ["Education", "Web", "Freelance"],
     panel: "mint",
-    mock: "onboarding",
+    mock: "dashboard",
   },
 ];
 
